@@ -22,4 +22,3 @@ int main() {
         cout << "Sigue buscando en otra casa" << endl;
     }
 }
- 
