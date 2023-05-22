@@ -1,23 +1,18 @@
 #include <iostream>
 #include <string>
-using namespace std;
 
-//Prototipo de funciones
-void find_Fluffy();
-void prueba_suma();
-void guess_the_number();
-void caracter_counter();
+using namespace std; 
+
+void mostrar(); //Mostrar todas las funciones 
+void find_Fluffy(); 
+int prueba_suma(int x, int y, int z);
+int guess_the_number(int a, int b);
+int caracter_counter(string query);
 void dont_food();
-void pow_without_pow();
+int pow_without_pow(int base, int xp);
 
 int main() {
-  //Llamamos la funcion
-    find_Fluffy(); //ejercicio 1
-    prueba_suma(); //ejercicio 2
-    guess_the_number(); //ejercicio 4
-    caracter_counter(); //ejercicio 7
-    dont_food(); //ejercicio 9
-    pow_without_pow(); //ejercicio 11
+    mostrar();
     return 0;
 }
 
@@ -38,35 +33,37 @@ void find_Fluffy() {
     }
 }
 
-void prueba_suma() {
-    int x, y, z;
-    cout << "Probemos tu capacidad de sumar. Escribe dos dígitos separados por un espacio y el tercer dígito será el resultado: ";
+int prueba_suma(int x, int y, int z) {
+    cout << "Probemos tu capacidad de sumar. Escribe dos digitos separados por un espacio y el tercer digito sera el resultado: ";
     cin >> x >> y >> z; //el usuario ingresa dos numeros y el tercero debe ser el resultado de la suma
     if (-1000000 <= (x + y) && (x + y) <= 1000000) {
         if (x + y != z) { //definimos un rango de entre -un millon y +un millon, para evitar problemas de calculo
             cout << "ERROR. La suma de " << x << " y " << y << " es " << x + y << endl << endl; //si la suma es incorrecta, el programa muestra error y muestra el resultado
+            return x + y;
         } else {
             cout << "Buen trabajo" << endl << endl; //damos un mensaje de aliento en caso de estar bien la suma
+            return 0;
         }
     } else {
-        cout << "ERROR. Prueba a usar números en un rango entre -1 millón y 1 millón" << endl; 
+        cout << "ERROR. Prueba a usar numeros en un rango entre -1 millon y 1 millon" << endl; 
         //si se pone valores menores a -un millon y +un millon, nos muestra un error
+        return 0;
     }
+    return 0;
 }
 
-void guess_the_number() {
-    int a = 7; //definimos el numero a adivinar
-    int b;
+int guess_the_number(int a, int b) {
+    a = 73; //definimos el numero a adivinar
     do { //mientras a sea diferente de b, mencionado despues en 'while', se ejecuta el siguiente bloque de codigo
-        cout << "Adivina el número (el número está entre 0 y 9): ";
+        cout << "Adivina el numero. \nPISTA. Es conocido como el primo de Sheldon: ";
         cin >> b; //es decir, hasta que se acierte el número, te lo seguirá pidiendo con el cin
     } while (a != b);
     //si adivina el número, mostramos el mensaje:
-    cout << "¡Correcto!" << endl; 
+    cout << "Correcto!" << endl; 
+    return 0;
 }
 
-void caracter_counter() {
-    string query;
+int caracter_counter(string query) {
     cout << "Escribe palabras para contar sus caracteres, separadas por un espacio: ";
     cin.ignore(); //para evitar errores en la ejecucion
     getline(cin, query); // Con cin recibimos y con getline leemos la línea de entrada
@@ -76,7 +73,8 @@ void caracter_counter() {
             count++; //el contador detecta que no hay espacios, por lo tanto sigue contando. Si hay espacios, no cuenta nada
         }
     }
-    cout << "El número de caracteres sin contar los espacios es: " << count << endl; //mostramos el numero de caracteres sin tomar en cuenta los espacios
+    cout << "El numero de caracteres sin contar los espacios es: " << count << endl; //mostramos el numero de caracteres sin tomar en cuenta los espacios
+    return count;
 }
 
 void dont_food() {
@@ -102,13 +100,36 @@ void dont_food() {
     }
 }
 
-void pow_without_pow() {
-    int base, xp;
-    cout << "Ingrese dos números separados por un espacio. El primero será la base y el segundo el exponente: ";
+int pow_without_pow(int base, int xp) {
+    cout << "Ingrese dos numeros separados por un espacio. El primero sera la base y el segundo el exponente: ";
     cin >> base >> xp; //pedimos al usuario ingresar dos numeros, el primero es la base y el segundo el exponente
     long long resultado = 1;
-    for (int i = 0; i < xp; i++) { //mientras i sea menor al exponente, se seguira aumentando
+    for (int i = 0; i < xp; i++) { //mientras i sea menor al exponente, i se seguira aumentando
         resultado *= base; //se multiplica 'resultado'(inicialmente 1) por la base, hasta que i sea menor que el 'xp' (exponente), por lo tanto es una potenciacion
     }
     cout << "El resultado de " << base << " elevado a " << xp << " es: " << resultado << endl; //mostramos el resultado
+    return resultado;
+}
+
+void mostrar() {
+    //En esta funcion mostrare todas las funciones anteriores llamando a las funciones ya creadas
+    find_Fluffy(); //Llamada a la funcion Encontrar en que casa se perdio Fluffy
+    
+    int x, y, z; 
+    prueba_suma(x, y, z);
+    
+    cin.ignore();
+    int a, b;
+    guess_the_number(a, b);
+    cout << endl;
+    
+    string query;
+    caracter_counter(query);
+    cout << endl;
+    
+    dont_food();
+    cout << endl;
+    
+    int base, xp;
+    pow_without_pow(base, xp);
 }

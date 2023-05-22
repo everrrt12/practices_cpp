@@ -1,45 +1,37 @@
 #include <iostream>
-#include <string> 
+#include <string>
 
 using namespace std;
 
-//Prototipo de funciones - Strings, casting y control de flujo
-void sumar_parte_entera(); //ejercicio 1
-void cociente_dos_numeros(); //ejercicio 2
-void surname_name(); //ejercicio 6
-void inv_with_getline(); //ejercicio 7 
-void obtener_caracter(); //ejercicio 8
-void mult_size(); //ejercicio 9
-void docs_finded(); //ejercicio 10
-void find_Fibonacci(); //ejercicio 11
+void mostrar();
+int sumar_parte_entera(double a, double b); 
+double cociente_dos_numeros (double num1, double num2); 
+void surname_name(); 
+void inv_with_getline();  
+void obtener_caracter(); 
+int mult_size(int x, int y); 
+void docs_finded(); 
+void find_Fibonacci();  
 
 int main() {
-    //llamar a las funciones - strings, casting y control de flujos
-    sumar_parte_entera(); //ejercicio 1
-    cociente_dos_numeros(); //ejercicio 2
-    surname_name(); //ejercicio 6
-    inv_with_getline(); //ejercicio 7
-    obtener_caracter(); //ejercicio 8
-    mult_size(); //ejercicio 9
-    docs_finded(); //ejercicio 10
-    find_Fibonacci(); //ejercicio 11
+    mostrar();
     return 0;
 }
 
-//Definir funciones
-void sumar_parte_entera() {
+int sumar_parte_entera(double a, double b) {
+    //Lo ponemos como un double para que el programa sea capaz de leer numeros decimales
     cout << "Ingrese un digito decimal" << endl; //pedimos al usuario ingresar un numero decimal
-    double a, b; //Lo ponemos como un double para que el programa sea capaz de leer numeros decimales
     //cin = console input, se reciben entradas del teclado
     cin >> a; 
     cout << "Ingrese otro para realizar la suma"<<endl; //pedimos al usuario ingresar otro numero para poder realizar la suma
     cin >> b; 
     int result = a + b; //guardamos la suma en la variable 'result' del tipo int, para que nos muestre la parte entera de los dígitos decimales sumados
-    cout << "El resultado es " << result << endl << endl; //mostramos el resultado
+    cout << "La suma entera de estos dos numeros es " << result << endl << endl;
+    return result;
 }
 
-void cociente_dos_numeros () {
-    double num1,num2; //double almacena numeros decimales
+double cociente_dos_numeros (double num1, double num2) {
+    //double almacena numeros decimales
     double cociente;
     cout << "Ingrese un numero decimal, este sera el dividendo" << endl;
     cin >> num1; //como num1 esta con la variable double, puede leer numeros decimales
@@ -47,6 +39,7 @@ void cociente_dos_numeros () {
     cin >> num2; //como num2 est� con la variable double, puede leer numeros decimales
     cociente = num1 / num2; //cociente es igual a la division '/' entre el primer numero introducido y el segundo
     cout << "El cociente de " << num1 << " entre " << num2 << " es "<< cociente << endl << endl; //mostramos el cociente entre ambos numeros 
+    return cociente;
 }
 
 void surname_name () {
@@ -86,8 +79,8 @@ void obtener_caracter () {
     cout<< a <<" "<< b <<" "<< c <<" "<< d <<" "<< e << endl << endl;
 }
 
-void mult_size () {
-    int x, y, add = 0, result = 0, size = 0;
+int mult_size (int x, int y) {
+    int add = 0, result = 0, size = 0;
     cout << "Ingresa dos numeros: "; //pedimos al usuario ingresar dos numeros
     cin >> x >> y;
     add = x + y; //guardamos la suma 
@@ -95,10 +88,11 @@ void mult_size () {
     size = to_string(add).length(); //con la funcion lenght 'contamos' los caracteres que contiene la palabra/numero hasta el primer espacio
     result = add * size; //guardamos el producto entre la suma por la cantidad de digitos del resultado de la suma
     cout << "El producto de " << add << " por " << size << " es " << result << endl << endl; //mostramos en pantalla
+    return result;
 }
 
 void docs_finded () {
-     int x;
+    int x;
     cout << "Enter a number " << endl; //Pedimos al usuario ingresar un numero
     cin >> x;
     if (x == 0){ 
@@ -124,4 +118,29 @@ void find_Fibonacci (){
     else {
         cout << "Este collar no es de Fibonacci" << endl; //sino se cumple la funcion, devuelve que el collar no pertenece a Fibo
     }   
+}
+
+void mostrar() {
+    double a, b;
+    sumar_parte_entera(a, b);
+    cout << endl;
+
+    double num1, num2;
+    cociente_dos_numeros(num1, num2);
+    cout << endl;
+    
+    surname_name();
+    
+    cin.ignore();
+    inv_with_getline();
+    
+    obtener_caracter();
+    
+    int x, y;
+    mult_size(x, y);
+    cout << endl;
+    
+    docs_finded();
+    
+    find_Fibonacci();
 }
